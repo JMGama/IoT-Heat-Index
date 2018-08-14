@@ -1,14 +1,27 @@
 from django.shortcuts import render
 from django.views import View
-from firebase_admin import credentials
+from firebase_admin import credentials, db
 
 import firebase_admin
+
 # Create your views here.
 
+
 class IndexView(View):
+    # Load Firebase data
+    cred = credentials.Certificate(
+        '/home/jmgamest/Documents/Programming/IoT-Heat-Index/heat_index/ServiceAccountKey.json')
+    default_app = firebase_admin.initialize_app(cred, {
+        'databaseURL': 'https://iot-heat-index.firebaseio.com/'
+    })
+
     def get(self, request):
+        data = db.reference().get()
+        # data = {'temperature': 30, 'humidity':50}
+        
         context = {
-            'temperature': 20,
-            'humidity': 70
+            'temperature': data['temperature'],
+            'humidity': data['humidity']
         }
+
         return render(request, 'heat_index/index.html', context)
