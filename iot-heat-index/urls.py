@@ -7,4 +7,5 @@ admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('heat_index/', include('heat_index.urls'))
 ]
