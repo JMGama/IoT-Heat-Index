@@ -1,53 +1,287 @@
 <!DOCTYPE html>
-<html>
-<title>Heat Index</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-    crossorigin="anonymous">
-<style>
-    body,
-    h1 {
-        font-family: "Raleway", sans-serif
-    }
+<html lang='es'>
 
-    body,
+<head>
+  {% load static %}
+  <title>Sistema Internet of Things(IoT)</title>
+  <meta name=\ "viewport\" content=\ "width=device-width, initial-scale=1\">
+  <link rel=\ "icon\" href=\ "data:,\">
+
+  <style>
     html {
-        height: 100%
+      display: inline-block;
+      margin: 0px auto;
+      text-align: center;
     }
 
-    .bgimg {
-        background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/HPOKFbR/snowfall-from-as-winter-season-weather-background-with-shallow-depth-of-field-1920x1080-full-hd-footage_mjaqihfl__F0000.png');
-        min-height: 100%;
-        background-position: center;
-        background-size: cover;
+    .button {
+      background-color: #195B6A;
+      border: none;
+      color: white;
+      padding: 16px 40px;
+      text-decoration: overline;
+      font-size: 30px;
+      margin: 2px;
+      cursor: pointer;
     }
-</style>
 
-<body>
+    .button2 {
+      background-color: #77878A;
+    }
 
-    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-        <div class="w3-display-topleft w3-padding-large w3-xlarge">
-            <p>Heat-Index with IoT</p>
+    body {
+      background-color: #666;
+      background-image:url({% static 'heat_index/images/fondo6.jpg' %});
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    #fuente {
+      font-family: "Raleway", sans-serif;
+    }
+
+    div {
+      display: inline-block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: "Raleway", sans-serif
+    }
+  </style>
+  <meta charset='utf-8'>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+
+
+
+</head>
+
+<body style="margin:auto;background-position: center;" class="w3-animate-opacity">
+  <h1>
+    <div align='center' class="w3-display-topleft w3-padding-large w3-xlarge">
+      <img src="{% static 'heat_index/images/logo_uc.png' %}" alt="Logo" width="300" height="80">
+      <br>
+    </div>
+    <div align='center' style="font-family: 'Caveat', cursive;" class="w3-display-topright w3-padding-large w3-xlarge">
+      <font color='#FFFFFF'>José Manuel Gama Estrada
+        <br> Abigail Moreno Morales
+      </font color>
+    </div>
+  </h1>
+
+  <div class="w3-display-middle">
+    <h2>
+      <div align='center' style="margin:auto;font-family: 'Raleway', sans-serif;
+          text-shadow: 3px 3px 5px #C006F8">
+        <font color='#FFFFFF'>Sistema de Temperatura de bochorno(TH) por Internet de las Cosas(IoT):</font>
+      </div>
+    </h2>
+
+    <h3>
+      <div align='center' style="font-family: 'Raleway', sans-serif;background-color: rgba(0, 0, 0, 0.5)">
+        <font color='#BE81F7'>
+          "La TH es un índice que combina la temperatura seca del aire y la humedad relativa para determinar la temperatura que percibe
+          el cuerpo humano"
+        </font color>
+      </div>
+    </h3>
+
+    <table border='1' width='500' cellpadding='5' style='margin:auto;'>
+      <tr>
+
+        <td style="background-color: rgba(115, 1, 41, 0.5);font-family: 'Dosis', sans-serif;">
+          <font color='#CFCFCF' size='5'>
+            Tipo de control
+            <br>
+          </font>
+        </td>
+
+        <td align='center' style="background-color: rgba(255, 255, 255, 0.5);font-family: 'Dosis', sans-serif;">
+          <form method=get>
+            <input type="image" alt="Manual" src="{% static 'heat_index/images/manual.png' %}" width="40" height="50">
+            <br> Manual
+            <!--<input type=submit name=Control value='Manual'> -->
+          </form>
+        </td>
+
+        <td align='center' style="background-color: rgba(255, 255, 255, 0.6)">
+          <form method=get>
+            <input type="image" alt="PID" src="{% static 'heat_index/images/PID.png' %}" width="70" height="40">
+            <!--<input type=submit name=Control value='PID'> -->
+          </form>
+        </td>
+
+        <td align='center' style="background-color: rgba(255, 255, 255, 0.5);font-family: 'Dosis', sans-serif;">
+          <form method=get>
+            <input type="image" alt="FLC" src="{% static 'heat_index/images/flc.png' %}" width="50" height="50">
+            <br>FLC
+            <!--<input type=submit name=Control value='FLC'> -->
+          </form>
+        </td>
+
+      </tr>
+    </table>
+    <br>
+    <hr color='#FFFFFF' style="margin:auto;width:100%">
+
+
+
+    <!-- MANUAL -->
+    <div id="manual" class="w3-animate-top" style="display: block;">
+      <h1>
+        <div id="fuente" align='center' style=" text-shadow: 3px 3px 5px #f00,
+          6px 6px 5px #F8063E,
+          9px 9px 5px #00f;">
+          <font color='#FFFFFF'>
+            Controlador Manual
+          </font color>
         </div>
-        <div class="w3-display-middle">
-            <h1 class="w3-jumbo w3-animate-top">Temperature: {{temperature}}ºC</h1>
-            <h1 class="w3-jumbo w3-animate-top">Humidity: {{humidity}}%</h1>
-            <hr class="w3-border-grey" style="margin:auto;width:40%">
-            <p class="w3-large w3-center">Control The World Temperature</p>
+        <br>
+        <div align='center' id="fuente">
+          <font color='#FFFFFF'>Temperatura = {{temperature}} ºC </font color>
         </div>
-        <div class="w3-display-bottomright w3-padding-large">
-            <p>
-                <i class="fas fa-code"></i> with
-                <i class="fa fa-heart"></i> by
-                <a href="https://twitter.com/jmgamest">JMGama</a> &
-                <a href="https://twitter.com/AbiiSykesSixx">AbiiSykesSixx</a>
-            </p>
+      </h1>
+      <h1>
+        <div align='center' id="fuente">
+          <font color='#FFFFFF'>Humedad Relativa = {{humidity}} % </font color>
         </div>
+      </h1>
+      <h1>
+        <div align='center' id="fuente">
+          <font color='#FFFFFF'>Temperatura de bochorno = {{heat_index}} % </font color>
+        </div>
+      </h1>
+
+      <table border='1' width='500' cellpadding='5' align='center'>
+        <tr>
+          <td id="fuente" style="background-color: rgba(115, 1, 41, 0.5);">
+            <font color='#CFCFCF' size='5'>Control Manual
+              <br>
+            </font>
+          </td>
+          <td align='center' style="background-color: rgba(0, 0, 0, 0.5)">
+            <form method=get>
+              <input type="image" alt="ON" src="{% static 'heat_index/images/on.png' %}" width="52" height="52">
+              <!-- <input type=submit name=Pin2 value='Encendido'> -->
+            </form>
+          </td>
+          <td align='center' style="background-color: rgba(0, 0, 0, 0.5)">
+            <form method=get>
+              <input type="image" alt="OFF" src="{% static 'heat_index/images/off.png' %}" width="55" height="55">
+              <!-- <input type=submit name=Pin2 value='Apagado'> -->
+            </form>
+          </td>
+          <!--if (Pin0ON){s += -->
+          <td align='center' style="background-color: rgba(0, 0, 0, 0.8)">
+            <font color='green' size='5'>ON
+          </td>
+          <!--else {s += -->
+          </td>
+          <td align='center' style="background-color: rgba(0, 0, 0, 0.8)">
+            <font color='red' size='5'>OFF
+          </td>
+        </tr>
+      </table>
+      <br>
     </div>
 
+
+
+    <!-- PID -->
+    <div id="PID" class="w3-animate-top" style="display: none;">
+      <h1>
+        <div id="fuente" align='center' style=" text-shadow: 3px 3px 5px #f00,
+               6px 6px 5px #F8063E,
+               9px 9px 5px #00f;">
+          <font color='#FFFFFF'>
+            Controlador PID
+          </font color>
+        </div>
+      </h1>
+      <h1>
+        <div id="fuente" align='center'>
+          <font color='#FFFFFF'>Temperatura = {{temperature}} ºC </font color>
+        </div>
+      </h1>
+      <h1>
+        <div id="fuente" align='center'>
+          <font color='#FFFFFF'>Humedad = {{humidity}} % </font color>
+        </div>
+      </h1>
+      <h1>
+        <div id="fuente" align='center'>
+          <font color='#FFFFFF'>Set-Point = ºC </font color>
+        </div>
+      </h1>";
+      <h1>
+        <div id="fuente" align='center'>
+          <font color='#FFFFFF'>PID (Proporcional = , Integrativo = , Derivativo = ) </font color>
+        </div>
+      </h1>
+      <h1>
+        <div id="fuente" align='center'>
+          <font color='#FFFFFF'>PID = PWM </font color>
+        </div>
+      </h1>
+    </div>
+
+
+
+
+    <!-- FLC -->
+    <div id="FLC" class="w3-animate-top" style="display: none;">
+      <h1>
+        <div id="fuente" align='center' style=" text-shadow: 3px 3px 5px #f00,
+             6px 6px 5px #F8063E,
+             9px 9px 5px #00f;">
+          <font color='#FFFFFF'>Controlador de Lógica Difusa </font color>
+        </div>
+      </h1>
+      <h1>
+        <div id="fuente" align='center'>
+          <font color='#FFFFFF'>Temperatura = {{temperature}} ºC</font color>
+        </div>
+      </h1>
+      <h1>
+        <div id="fuente" align='center'>
+          <font color='#FFFFFF'>Humedad = {{humidity}} %</font color>
+        </div>
+      </h1>
+      <h1>
+        <div id="fuente" align='center'>
+          <font color='#FFFFFF'>Heat Index ( Frio = , Templado = , Caliente = ) </font color>
+        </div>
+      </h1>
+      <h1>
+        <div id="fuente" align='center'>
+          <font color='#FFFFFF'>Risk output = Vac, Speed output = m/s </font color>
+        </div>
+      </h1>
+    </div>
+
+  </div>
+
+  <div class="w3-display-bottomright w3-padding-large w3-text-white">
+    <p style="margin:auto;font-family: 'Raleway', sans-serif;">
+      <i class="fa fa-code"></i> with
+      <i class="fa fa-heart"></i> by
+      <a href="https://twitter.com/jmgamest">JMGama</a> &
+      <a href="https://twitter.com/AbiiSykesSixx">AbiiSykesSixx</a>
+    </p>
+  </div>
+
+  <script src="http://code.jquery.com/jquery.js"></script>
 </body>
 
 </html>
