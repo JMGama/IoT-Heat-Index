@@ -10,7 +10,7 @@ import firebase_admin
 class IndexView(View):
     # Load Firebase data
     cred = credentials.Certificate(
-        '/home/jmgamest/Documents/Programming/IoT-Heat-Index/ServiceAccountKey.json')
+        './ServiceAccountKey.json')
     default_app = firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://iot-heat-index.firebaseio.com/'
     })
