@@ -16,18 +16,12 @@ class IndexView(View):
     })
 
     def get(self, request):
-        # data = db.reference().get()
-        
-        # context = {
-        #     'temperature': data['temperature'],
-        #     'humidity': data['humidity']
-        # }
+        data = db.reference().get()
         
         context = {
-            'temperature': 30,
-            'humidity': 55,
-            'heat_index': 12,
-            'control': 1
+            'temperature': data['temperature'],
+            'humidity': data['humidity'],
+            'heat_index': int(data['heat_index']),
         }
 
         return render(request, 'heat_index/index.html', context)
